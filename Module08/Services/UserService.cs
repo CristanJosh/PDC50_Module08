@@ -32,8 +32,9 @@ namespace Module08.Services
         //add user
         public async Task<string> AddUserAsync(User user)
         {
-            var response = await _httpClient.PostAsJsonAsync($"{BaseUrl} add_user.php", user);
+            var response = await _httpClient.PostAsJsonAsync($"{BaseUrl}add_user.php", user);
             var result = await response.Content.ReadAsStringAsync();
+            Console.WriteLine($"Add user result: {result}");  // Log the result for debugging
             return result;
         }
 
