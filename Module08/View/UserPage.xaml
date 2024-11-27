@@ -27,6 +27,23 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+
+
+        <Label 
+         Text="Add User"
+         VerticalOptions="Center" 
+         HorizontalOptions="Center" />
         
+        <Label Text="Name"/>
+        <Entry Placeholder="Enter Name" Text="{Binding NameInput}"/>
+        
+        <Label Text="Gender"/>
+        <Entry Placeholder="Enter Gender" Text="{Binding GenderInput}"/>
+        
+        <Label Text="Contact No."/>
+        <Entry Placeholder="Enter ContactNo" Text="{Binding ContactNoInput}"/>
+
+        <Button Text="Add User" Command="{Binding AddUserCommand}"/>
+
     </VerticalStackLayout>
 </ContentPage>

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Module08.Model;
 using System.Net.Http.Json;
 
+
 namespace Module08.Services
 {
     public class UserService
@@ -27,5 +28,31 @@ namespace Module08.Services
             var response = await _httpClient.GetFromJsonAsync<List<User>>($"{BaseUrl}get_user.php");
             return response ?? new List<User>();
         }
+
+        //add user
+        public async Task<string> AddUserAsync(User user)
+        {
+            var response = await _httpClient.PostAsJsonAsync($"{BaseUrl} add_user.php", user);
+            var result = await response.Content.ReadAsStringAsync();
+            return result;
+        }
+
+        //update user
+        public async Task<string> UpdateUserAsync(User user)
+        {
+            var response = await _httpClient.PostAsJsonAsync($"{BaseUrl} update_user.php", user);
+            var result = await response.Content.ReadAsStringAsync();
+            return result;
+        }
+
+        //delete user
+        public async Task<string> DeleteUserAsync(User userID)
+        {
+            var response = await _httpClient.PostAsJsonAsync($"{BaseUrl} delete_user.php", new {id = userID});
+            var result = await response.Content.ReadAsStringAsync();
+            return result;
+        }
+
+
     }
 }
