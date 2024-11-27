@@ -41,10 +41,27 @@ namespace Module08.Services
         //update user
         public async Task<string> UpdateUserAsync(User user)
         {
-            var response = await _httpClient.PostAsJsonAsync($"{BaseUrl} update_user.php", user);
-            var result = await response.Content.ReadAsStringAsync();
-            return result;
+            try
+            {
+                var response = await _httpClient.PostAsJsonAsync($"{BaseUrl}update_user.php", user);
+                if (response.IsSuccessStatusCode)
+                {
+                    return "Success";
+                }
+                else
+                {
+                    var errorMessage = await response.Content.ReadAsStringAsync();
+                    return errorMessage;  // Handle errors from the server
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log and handle any exceptions that occur during the HTTP request
+                Console.WriteLine($"Error updating user: {ex.Message}");
+                return "Error";
+            }
         }
+
 
         //delete user
         public async Task<string> DeleteUserAsync(int userID)

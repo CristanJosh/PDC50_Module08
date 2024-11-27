@@ -45,6 +45,8 @@
 
         <Button Text="Add User" Command="{Binding AddUserCommand}"/>
 
+        <Button Text="Update User" Command="{Binding UpdateUserCommand}"/>
+
         <Button Text="Delete User" Command="{Binding DeleteUserCommand}"/>
 
 
