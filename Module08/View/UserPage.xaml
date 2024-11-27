@@ -11,7 +11,7 @@
 
         <Button Text="Load USers" Command="{Binding LoadUserCommand}"/>
 
-        <ListView ItemsSource="{Binding Users}">
+        <ListView ItemsSource="{Binding Users}" SelectedItem="{Binding SelectedUser}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -44,6 +44,9 @@
         <Entry Placeholder="Enter ContactNo" Text="{Binding ContactNoInput}"/>
 
         <Button Text="Add User" Command="{Binding AddUserCommand}"/>
+
+        <Button Text="Delete User" Command="{Binding DeleteUserCommand}"/>
+
 
     </VerticalStackLayout>
 </ContentPage>
