@@ -159,8 +159,9 @@ namespace Module08.ViewModel
                     ContactNo = ContactNoInput,
                 };
                 var result = await _userService.AddUserAsync(newUser);
+                await LoadUsers();
 
-                if(result.Equals("Success", StringComparison.OrdinalIgnoreCase))
+                if (result.Equals("Success", StringComparison.OrdinalIgnoreCase))
                 {
                     await LoadUsers();
                 }

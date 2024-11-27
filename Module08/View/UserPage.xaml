@@ -2,53 +2,130 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Module08.View.UserPage"
-             Title="UserPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Data Access using API"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+             Title="UserPage"
+             BackgroundColor="#F5F5F5">
 
-        <Button Text="Load USers" Command="{Binding LoadUserCommand}"/>
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20" VerticalOptions="Center">
 
-        <ListView ItemsSource="{Binding Users}" SelectedItem="{Binding SelectedUser}">
+        <!-- Page Header -->
+        <Label Text="Data Access using API"
+               FontSize="24"
+               FontAttributes="Bold"
+               TextColor="#333333"
+               HorizontalOptions="Center" />
+
+        <!-- Load Users Button -->
+        <Button Text="Load Users"
+                Command="{Binding LoadUserCommand}"
+                BackgroundColor="#4CAF50"
+                TextColor="White"
+                CornerRadius="8"
+                HeightRequest="50"
+                HorizontalOptions="FillAndExpand"/>
+
+        <!-- User List -->
+        <ListView ItemsSource="{Binding Users}"
+                  SelectedItem="{Binding SelectedUser}"
+                  HasUnevenRows="True"
+                  SeparatorVisibility="Default"
+                  BackgroundColor="White"
+                  Margin="0,10,0,10">
+
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Orientation="Horizontal"
-                                     Padding="10">
-                            
-                            <Label Text="{Binding Name}" FontAttributes="Bold"/>
-                            <Label Text=" | " />
-                            <Label Text="{Binding Gender}"/>
-
+                        <StackLayout Orientation="Horizontal" Padding="15">
+                            <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="16" VerticalOptions="Center" />
+                            <Label Text=" | " VerticalOptions="Center" />
+                            <Label Text="{Binding Gender}" FontSize="16" VerticalOptions="Center" />
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
 
+        <!-- Add User Section -->
+        <Label Text="Add User"
+               FontSize="20"
+               FontAttributes="Bold"
+               TextColor="#333333"
+               HorizontalOptions="Center" />
 
-        <Label 
-         Text="Add User"
-         VerticalOptions="Center" 
-         HorizontalOptions="Center" />
-        
-        <Label Text="Name"/>
-        <Entry Placeholder="Enter Name" Text="{Binding NameInput}"/>
-        
-        <Label Text="Gender"/>
-        <Entry Placeholder="Enter Gender" Text="{Binding GenderInput}"/>
-        
-        <Label Text="Contact No."/>
-        <Entry Placeholder="Enter ContactNo" Text="{Binding ContactNoInput}"/>
+        <StackLayout Spacing="10">
 
-        <Button Text="Add User" Command="{Binding AddUserCommand}"/>
+            <!-- Name Input -->
+            <Label Text="Name"
+                   FontSize="14"
+                   TextColor="#555555" />
+            <Frame BackgroundColor="White"
+                   BorderColor="#ddd"
+                   CornerRadius="8"
+                   HasShadow="True"
+                   Padding="10">
+                <Entry Placeholder="Enter Name"
+                       Text="{Binding NameInput}"
+                       HeightRequest="45"/>
+            </Frame>
 
-        <Button Text="Update User" Command="{Binding UpdateUserCommand}"/>
+            <!-- Gender Input -->
+            <Label Text="Gender"
+                   FontSize="14"
+                   TextColor="#555555" />
+            <Frame BackgroundColor="White"
+                   BorderColor="#ddd"
+                   CornerRadius="8"
+                   HasShadow="True"
+                   Padding="10">
+                <Entry Placeholder="Enter Gender"
+                       Text="{Binding GenderInput}"
+                       HeightRequest="45"/>
+            </Frame>
 
-        <Button Text="Delete User" Command="{Binding DeleteUserCommand}"/>
+            <!-- Contact Number Input -->
+            <Label Text="Contact No."
+                   FontSize="14"
+                   TextColor="#555555" />
+            <Frame BackgroundColor="White"
+                   BorderColor="#ddd"
+                   CornerRadius="8"
+                   HasShadow="True"
+                   Padding="10">
+                <Entry Placeholder="Enter Contact No."
+                       Text="{Binding ContactNoInput}"
+                       HeightRequest="45"/>
+            </Frame>
+        </StackLayout>
 
+        <!-- Action Buttons -->
+        <StackLayout Spacing="10" VerticalOptions="CenterAndExpand">
+
+            <Button Text="Add User"
+                    Command="{Binding AddUserCommand}"
+                    BackgroundColor="#2196F3"
+                    TextColor="White"
+                    CornerRadius="8"
+                    HeightRequest="50"
+                    HorizontalOptions="FillAndExpand"/>
+
+            <Button Text="Update User"
+                    Command="{Binding UpdateUserCommand}"
+                    BackgroundColor="#FF9800"
+                    TextColor="White"
+                    CornerRadius="8"
+                    HeightRequest="50"
+                    HorizontalOptions="FillAndExpand"/>
+
+            <Button Text="Delete User"
+                    Command="{Binding DeleteUserCommand}"
+                    BackgroundColor="#F44336"
+                    TextColor="White"
+                    CornerRadius="8"
+                    HeightRequest="50"
+                    HorizontalOptions="FillAndExpand"/>
+        </StackLayout>
 
     </VerticalStackLayout>
+    </ScrollView>
+
 </ContentPage>
